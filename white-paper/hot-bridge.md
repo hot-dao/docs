@@ -6,6 +6,12 @@ description: >-
 
 # 🔓 HOT Bridge
 
+
+
+{% hint style="warning" %}
+This is an early version of the documentation and it continues to be expanded and improved.
+{% endhint %}
+
 Overview
 
 Bridges are a bundle of contracts on 2 networks that allows users to transfer tokens between blockchains. Typically, cross-chain messages are used to transfer assets. For example LayerZero does this, they send a transfer message between contracts on different networks.
@@ -20,11 +26,11 @@ The user sends the signed transaction by RPC to the networks where he wants to r
 
 1. Sent token to Bridge smart contract on Base blockchain
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 2. Create and Sign "transfer" transaction from HOT MPC blockchain
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 3. Execute sign transaction on NEAR Protocol and receive tokens
 
