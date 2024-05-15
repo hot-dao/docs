@@ -30,3 +30,7 @@ A HOT Accounts is a accounts created on top of the HOT Protocol. Their private k
 
 
 
+{% embed url="https://www.youtube.com/watch?v=575MKP65k-I" %}
+
+
+
