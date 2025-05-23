@@ -1,36 +1,79 @@
----
-description: We are pleased to announce the launch of HOT Protocol.
----
+# Overview
 
-# 🔥 HOT Protocol \[FAQ]
+### What is a HOT Protocol?
 
-{% hint style="warning" %}
-This is an early version of the documentation and it continues to be expanded and improved.
-{% endhint %}
+The HOT Protocol is a combination of smart contracts and off-chain services that enables the creation of logic to improve the user experience for crypto asset holders.
 
-### What is an MPC Wallet
+We focus on the following areas:
 
-An MPC wallet is a type of cryptocurrency wallet that divides the private key into multiple parts and stores them in different locations for increased security. Usually access to such servers is controlled centrally, by Coinbase, Binance, OKX or ByBit or other provider. In **HOT Protocol**, the key is stored with a large number of independent validators and the proof of ownership is stored on-chan. This makes the protocol open and guarantees the owner access to the MPC wallet.
+* Chain Abstraction
+* Identity Management
 
-By working on top of NEAR Chain Abstraction, such nodes are resistant to rotation. The disclosure of one or more keys of individual nodes carries no risks for wallets created on top of the protocol. Also, new nodes can connect to sign transactions thanks to key sharing, allowing the protocol to be even more decentralized.
+Although the protocol is chain-agnostic, its core logic is deployed on the NEAR blockchain due to the convenience of its infrastructure
 
-### HOT
+### What is Chain Abstraction?
 
-HOT - the centerpiece of the HOT Protocol economy. HOT will be staked by validators as collateral for their participation in transaction signing. Users and projects will burn HOT when making transactions on wallets on top of the HOT Protocol. This economy will make the HOT network sustainable and independent.
+Chain abstraction refers to the idea of hiding the complexities and specifics of individual blockchains from users or developers, enabling seamless interaction with multiple blockchains as if they were one unified system
 
-### HOT Accounts
+This achieved by implementing OmniBridge to be later used in Near intents.
 
-A HOT Accounts is a accounts created on top of the HOT Protocol. Their private key is stored distributed in a network of validators. This allows users to give limited access to account, transfer ownership of wallets, replace the seed-phrase, customize 2FA and more. HOT is an open protocol, HOT accounts can be used through any compatible crypto wallet. For example, HERE Wallet and HOT Cli.
+#### What is OmniBridge?
 
-### What problems does HOT Protocol solve
+OmniBridge enables **interoperability** between blockchains by acting as a trusted messenger and token custodian. Instead of deploying new tokens or relying on centralized exchanges, users can move existing tokens across chains, maintaining their value and utility in different blockchain environments.
 
-1. **Replaceable the seed-phrase.** Accounts created on top of HOT Protocol can have their seed-phrases changed. This not only increases the security of such wallets, but also gives access to transfer accounts with their reputation and locked tokens.
-2. **2FA.** Thanks to the flexible access system, you can set up 2FA via SMS or mail to sign transactions. At the same time, 2FA can always be waived after waiting a few days. If your seed phrase has been compromised, you will always have time to react and replace it.
-3. **Cross-chain gas.** With HOT Relay you can perform transactions on any network and pay for gas in HOT.
+#### What is Near Intents?
 
+> In NEAR, an `intent` is a high level declaration of what a user wants to achieve. Think of it as telling the blockchain "what" you want to do, not "how" to do it. For example, instead of manually:
+>
+> * Finding the best DEX for a token swap
+> * Calculating optimal routes
+> * Executing multiple transactions
+>
+> You simply express: "I want to swap Token A for Token B at the best price."
 
+[https://docs.near.org/chain-abstraction/intents/overview](https://docs.near.org/chain-abstraction/intents/overview)
 
-{% embed url="https://www.youtube.com/watch?v=575MKP65k-I" %}
+### Identity Management
 
+Currently, there are two main options for storing your assets — and by extension, your "identity":
+
+1. **Centralized exchanges (custodial wallets)**, such as Binance, Bybit, etc.\
+   You have access to your account, which implies you _may_ have the right to manage your assets. In practice, custodial wallets are subject to regulatory restrictions. On the plus side, they’re as easy to use as logging into your Google Account — often providing a sense of chain abstraction.
+2. **Self-hosted wallets** (seed-phrase based).\
+   You have full control over your assets, but you bear the responsibility of securely storing your seed phrase (e.g., 12 words written on a piece of paper). This is far less intuitive compared to modern authentication flows we’re used to in everyday apps.
+
+Think of these as the two ends of a spectrum.
+
+We propose a solution that lies in the middle:
+
+* No external "governance" or KYC over your assets
+* Full control remains in your hands
+* Flexible identity authorization logic (e.g., password + 2FA)
+* Transferable identity: for instance, you could sell full access to an account for $20, after which the seller permanently loses control
+
+This approach is implemented using **Multi-Party Computation (MPC)** services.
+
+### What is MPC?&#x20;
+
+**Multi-Party Computation (MPC)** is a cryptographic technique that allows multiple parties to **jointly compute a function over their inputs** without revealing those inputs to each other.
+
+#### Core Idea
+
+* Several parties each hold private input data.
+* They want to compute a result (e.g., a signature, sum, or encrypted value) based on all their inputs.
+* MPC enables this computation **without any party revealing their individual input**, and without requiring a trusted third party.
+
+#### Simple Example
+
+Three people want to calculate the **average of their salaries** without disclosing their individual amounts.\
+MPC allows them to compute the correct average **without exposing any single salary**.
+
+#### Our application
+
+* **Threshold cryptography**: Splitting private keys across multiple parties (e.g., 2-of-3 signing).
+* **Key management**: Secure signing without ever reconstructing the full key.
+* **Secure wallets**: non-custodial key control with improved UX and no seed phrase.
+
+\
 
 

@@ -1,10 +1,9 @@
 # Table of contents
 
-* [🔥 HOT Protocol \[FAQ\]](README.md)
-  * [📓 Wallet ownership](hot-protocol-faq/wallet-ownership/README.md)
-    * [🔑 Auth by Keys](hot-protocol-faq/wallet-ownership/auth-by-keys.md)
-* [📖 White Paper](white-paper/README.md)
-  * [🔓 HOT Bridge](white-paper/hot-bridge.md)
-* [⚒️ SDK](sdk/README.md)
-  * [🔧 Wallet Connect](sdk/wallet-connect.md)
-  * [🛩️ Telegram Wallet](sdk/telegram-wallet.md)
+* [Overview](README.md)
+* [Signature generation via MPC](signature-generation-via-mpc.md)
+* [Omni Tokens](omni-tokens/README.md)
+  * [👮 Threat Modeling](omni-tokens/threat-modeling.md)
+  * [🏦 Lockers Contracts](omni-tokens/lockers-contracts/README.md)
+    * [Soroban Locker](omni-tokens/lockers-contracts/soroban-locker.md)
+* [MPC Wallet](mpc-wallet.md)
