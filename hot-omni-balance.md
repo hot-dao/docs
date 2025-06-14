@@ -11,7 +11,7 @@ HOT Omni Balance standardizes work with tokens secured by:
 
 Once bridged, all balances are stored in a **on-chain "database" smart contract**, hosted on the NEAR blockchain. This contract acts as the canonical source of truth for all Omni Token balances, enabling secure and composable interactions.
 
-<figure><img src=".gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
 
 ### Trustless Intents
 
@@ -90,7 +90,7 @@ To enable seamless integration across chains, HOT Omni Balance supports native s
 
 This allows users to sign intents using their native wallets without needing additional infrastructure.
 
-<figure><img src=".gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
 
 ### Swap Architecture
 
@@ -115,5 +115,6 @@ Thanks to HOT Omni Balance intent model, developers can build **Chain Abstractio
 
 <figure><img src=".gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
+### SDK
 
-
+{% embed url="https://github.com/hot-dao/omni-sdk" %}
