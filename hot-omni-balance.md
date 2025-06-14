@@ -1,15 +1,17 @@
 # HOT Omni Balance
 
-## Overview
+Overview
 
 **HOT Omni Balance** is a cross-chain representations of assets from various networks. It allow unified interaction with tokens across Ethereum-compatible chains, Solana, TON, Bitcoin, Zcash, and more.
 
 HOT Omni Balance standardizes work with tokens secured by:
 
-* **HOT Omni Bridge** – supporting EVM-compatible chains.
-* **Lite Client Bridges** – for trustless Bitcoin and Zcash bridging.
+* [**HOT Omni Bridge** ](omni-tokens/)– supporting EVM-compatible chains, Solana, TON, Stellar
+* [**Lite Client Bridges**](https://docs.satos.network/introduction/protocol/protocol-lite-paper) – for trustless Bitcoin and Zcash bridging.
 
 Once bridged, all balances are stored in a **on-chain "database" smart contract**, hosted on the NEAR blockchain. This contract acts as the canonical source of truth for all Omni Token balances, enabling secure and composable interactions.
+
+<figure><img src=".gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
 
 ### Trustless Intents
 
@@ -88,7 +90,7 @@ To enable seamless integration across chains, HOT Omni Balance supports native s
 
 This allows users to sign intents using their native wallets without needing additional infrastructure.
 
-***
+<figure><img src=".gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
 ### Swap Architecture
 
@@ -110,6 +112,8 @@ Thanks to HOT Omni Balance intent model, developers can build **Chain Abstractio
 * Interact with assets from multiple chains via a single interface.
 * Use one signer identity to control assets from Solana, Ethereum, TON, etc.
 * Stay gasless: all fees can be subsidized or paid via token abstraction.
+
+<figure><img src=".gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 
 

@@ -1,4 +1,4 @@
-# Omni Tokens
+# HOT Bridge
 
 ## Abstract
 
