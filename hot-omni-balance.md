@@ -1,6 +1,6 @@
 # HOT Omni Balance
 
-Overview
+## Overview
 
 **HOT Omni Balance** is a cross-chain representations of assets from various networks. It allow unified interaction with tokens across Ethereum-compatible chains, Solana, TON, Bitcoin, Zcash, and more.
 
