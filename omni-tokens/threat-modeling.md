@@ -26,7 +26,6 @@ Validator infrastructure and HOT MPC nodes are distributed globally across trust
 **🔸 Threat: Smart contract bugs (e.g. unlimited deposits, unauthorized withdrawals)**
 
 * **Stellar Network Mitigation:**
-  * The Stellar locker smart contract has undergone internal review by the **Stellar Development Foundation (SDF)**.
   * HOT DAO retains exclusive control over contract upgrades.
   * Additional third-party audits are scheduled as liquidity grows.
 * **EVM Network Mitigation:**
