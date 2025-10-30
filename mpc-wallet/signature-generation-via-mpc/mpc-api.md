@@ -6,7 +6,7 @@ Public RPCs
 
 ## 1/2. Create wallet `/create_wallet`
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 #### 1. Generate a new Ed25519 keypair
 
@@ -79,7 +79,7 @@ curl 'https://rpc1.hotdao.ai/create_wallet' \
 
 ## 2/2.Sign massage `/sign`&#x20;
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 our JSON request to the API should include:
 
