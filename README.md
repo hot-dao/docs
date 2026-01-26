@@ -74,6 +74,5 @@ MPC allows them to compute the correct average **without exposing any single sal
 * **Key management**: Secure signing without ever reconstructing the full key.
 * **Secure wallets**: non-custodial key control with improved UX and no seed phrase.
 
-\
-
+<br>
 

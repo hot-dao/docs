@@ -20,7 +20,7 @@ As we work with chain agnostic identities, we have to explicitly define what ide
 
 Identity is a `wallet_id: [u8; 32]` , some 32 bytes, which is a hash of _some_ `uid`&#x20;
 
-<figure><picture><source srcset="../../.gitbook/assets/image (5).png" media="(prefers-color-scheme: dark)"><img src="../../.gitbook/assets/image (5).png" alt=""></picture><figcaption></figcaption></figure>
+<figure><picture><source srcset="../../.gitbook/assets/image (5) (1).png" media="(prefers-color-scheme: dark)"><img src="../../.gitbook/assets/image (5) (1).png" alt=""></picture><figcaption></figcaption></figure>
 
 Suffice to say at the moment, that `uid` coming from a random source.
 
@@ -30,7 +30,7 @@ We have to associate a key pair with an identity.
 
 All accounts are created on top of MPC network. The MPC network has its own master key, from which all keys are derived. This process is described as Key Derivation Function:
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 Thus, a set of public keys associated with `wallet_id` comes from `uid` too.
 
@@ -62,8 +62,7 @@ JsonValue {
 
 * `uid` – unique identifier for the user. Then we simply calculate `wallet_id = hash(uid)`
 * `message` – message to be signed
-* `proof` – data used to authorize the signature for the given uid\
-
+* `proof` – data used to authorize the signature for the given uid<br>
 
 2. **MPC Network before initiating a signing algorithm, starts the validation procedure**
 
