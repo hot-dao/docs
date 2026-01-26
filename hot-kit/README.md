@@ -1,10 +1,10 @@
+---
+description: >-
+  HOT Kit is a powerful library for blockchain and omni-balance management. It
+  supports both browser-based dApps and servers. Key features include
+---
+
 # HOT Kit
-
-
-
-**HOT Kit Overview**
-
-HOT Kit is a powerful library for blockchain and omni-balance management. It supports both browser-based dApps and servers. Key features include:
 
 ### 1. Multi-chain connector
 

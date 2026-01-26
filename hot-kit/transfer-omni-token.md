@@ -1,5 +1,7 @@
 # Transfer omni token
 
+Если вы работаете с омни балансами, то два самых частых юзкейса это обмен и трансфер&#x20;
+
 ```typescript
 import "dotenv/config";
 
