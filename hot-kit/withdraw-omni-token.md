@@ -1,9 +1,9 @@
 # Withdraw omni token
 
-Второй юзкейс для раб
+Второй юзкейс при работе с омни — это вывод токенов на блокчейн, давайте рассмотрим пример как это можно реализовать через exchange:
 
 {% hint style="info" %}
-Полностью рабочий пример вы можете найти здесь:<br>
+Полностью рабочий пример вы можете найти здесь:
 
 [https://github.com/hot-dao/kit/blob/main/examples-node/withdraw.ts](https://github.com/hot-dao/kit/blob/main/examples-node/withdraw.ts)
 {% endhint %}
