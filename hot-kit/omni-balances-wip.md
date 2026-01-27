@@ -1,2 +1,6 @@
-# Omni balances
+---
+icon: square-binary
+---
+
+# Omni balances (wip)
 

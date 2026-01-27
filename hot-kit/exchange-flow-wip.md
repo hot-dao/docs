@@ -1,6 +1,7 @@
 ---
 description: С помощью
+icon: rotate-reverse
 ---
 
-# Exchange flow
+# Exchange flow (wip)
 
