@@ -1,3 +1,7 @@
+---
+icon: wallet
+---
+
 # Manage connected wallets
 
 The `HotConnector` class implements communication between different components of the library, maintaining the state of connected wallets, balances, and active transactions. Let's look at how to use it:

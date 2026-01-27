@@ -1,3 +1,7 @@
+---
+icon: arrow-down-to-line
+---
+
 # Installation
 
 {% hint style="info" %}

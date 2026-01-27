@@ -1,3 +1,7 @@
+---
+icon: badge-dollar
+---
+
 # Manage tokens and balances
 
 ### Token class
