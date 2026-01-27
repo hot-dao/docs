@@ -4,10 +4,10 @@ icon: money-simple-from-bracket
 
 # Withdraw omni token
 
-Второй юзкейс при работе с омни — это вывод токенов на блокчейн, давайте рассмотрим пример как это можно реализовать через exchange:
+The second use case when working with Omni is withdrawing tokens to the blockchain. Let’s look at an example of how this can be implemented via an exchange.
 
 {% hint style="info" %}
-Полностью рабочий пример вы можете найти здесь:
+You can find a complete working example here:
 
 [https://github.com/hot-dao/kit/blob/main/examples-node/withdraw.ts](https://github.com/hot-dao/kit/blob/main/examples-node/withdraw.ts)
 {% endhint %}
@@ -15,53 +15,52 @@ icon: money-simple-from-bracket
 <pre class="language-typescript"><code class="lang-typescript">import { Recipient, WalletType, tokens, OmniToken, Network, Exchange } from "@hot-labs/kit/core";
 import { NearWallet } from "@hot-labs/kit/near";
 
-// Создаем класс для обменов
 const exchange = new Exchange();
-
-// Создаем кошелек и получателя
 const wallet = await NearWallet.fromPrivateKey(Buffer.from(PRIVATE_KEY), SIGNER_ID);
 const recipient = await Recipient.fromAddress(WalletType.Tron, "TTB...");
 
-// Мы будем переводить OMNI USDT на TRC20 USDT
+// We want to exchange OMNI USDT to TRC20 USDT
 const omniUSDT = tokens.get(OmniToken.USDT);
 const realTRONUSDT = tokens.get("TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t", Network.Tron);
 
-// Получим квоту на вывод 
+// Get qoute for exchange
 const review = await exchange.reviewSwap({
     sender: wallet,
     
-    // Получатель трон адрес
+    // Who receive TRC20 USDT
     recipient: recipient,
     
-    // Если обмен не пройдет, то омни юсдт вернутся обратно на наш кошелек 
+    // If the exchange does not occur, USDT will automatically be returned to our wallet.
     refund: wallet,
 
     from: omniUSDT, // OMNI TOKEN
     to: realTRONUSDT, // TRON TOKEN
 
-    // Отправляем 10 USDT
+    // Send 10 USDT
     amount: omniUSDT.int(10),
     type: "exactIn",
-
-    // По скольку происходит не просто вывод, 
-    // а обмен на другой токен, то важно заложить слипалд!
+    
+    // Since it's not just an output but an exchange for another token, 
+    // it's important to account for slippage!
     slippage: 0.01, // 1% slippage
     
     logger: console,
 });
 
 
-// Смотрим сколько токенов прийдет получателю. Надо учитывать, что курс может быть плохим!
+// Check how many tokens the recipient will receive. 
+// Remember to consider that the exchange rate might be unfavorable!
 console.log("From", review.from.float(review.amountIn), review.from.symbol);
 console.log("To", review.to.float(review.amountOut), review.to.symbol);
 
-// review объект содержит все что нужно, чтобы совершить этот вывод.
-// makeSwap отправит токены с вашего кошелька, но сам обмен будет занимать больше времени!
+// The review object includes everything needed to proceed with this output. 
+// The makeSwap function will transfer tokens from your wallet, 
+// but note that the exchange process will take more time to complete.
 const { processing } = await exchange.makeSwap(review);
 
-// Отдельным методом начинаем ждать результата обмена
+// Start a separate method to monitor and wait for the exchange result.
 const resultReview = await processing?.();
 
-<strong>// Теперь деньги дошли!
+<strong>// Funds have now arrived!
 </strong>console.log(resultReview);
 </code></pre>
