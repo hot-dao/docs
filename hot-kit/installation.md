@@ -12,7 +12,7 @@ To fully utilize the features of HOT Kit, obtain a free API key from the platfor
 
 `npm install @hot-labs/kit`
 
-HOT Kit require you to install node polyfills and react to work, for vite you need to complete the following extra steps:
+HOT Kit require you to install **node-polyfills** and react to work, for **vite** you need to complete the following extra steps:
 
 `npm install vite-plugin-node-polyfills @vitejs/plugin-react`
 
@@ -28,7 +28,13 @@ export default defineConfig({
 });
 ```
 
-And now you can&#x20;
+Also HotConnector use React and ReactDOM to render UI, you should install this deps to start work:
+
+```
+npm install react react-dom
+```
+
+And now your can initialize connector:
 
 ```ts
 import { HotConnector } from "@hot-labs/kit";
