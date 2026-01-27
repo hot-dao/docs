@@ -1,6 +1,15 @@
 # Withdraw omni token
 
+Второй юзкейс для раб
+
+{% hint style="info" %}
+Полностью рабочий пример вы можете найти здесь:<br>
+
+[https://github.com/hot-dao/kit/blob/main/examples-node/withdraw.ts](https://github.com/hot-dao/kit/blob/main/examples-node/withdraw.ts)
+{% endhint %}
+
 ```typescript
+
 import "dotenv/config";
 
 import { base58 } from "@scure/base";

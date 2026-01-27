@@ -2,6 +2,11 @@
 
 Если вы работаете с омни балансами, то два самых частых юзкейса это обмен и трансфер.  Давайте рассмотрим как можно реализовать отправку омни токена с вашего кошелька на другой адрес.
 
+{% hint style="info" %}
+Полностью рабочий пример вы можете найти здесь:\
+[https://github.com/hot-dao/kit/blob/main/examples-node/transfer.ts](https://github.com/hot-dao/kit/blob/main/examples-node/transfer.ts)
+{% endhint %}
+
 #### 1. Connect wallet
 
 Для начала, если вы используете **nodejs**, а не браузер, то вам необходимо инициализировать кошелек через приватный ключ. Например так:
@@ -54,15 +59,10 @@ const hash = await wallet
 console.log("10 NEAR Transfer Hash:", `https://hotscan.org/transaction/${hash}`);
 ```
 
-У каждого кошелька в HOT Kit есть специальный IntentsBulder, с помощью которого вы можете сформировать любое действие с вашими омни балансом. Цепочка команд чаще всего заканчивается вызовом execute, который вызывает подпись сформированных интентов и затем отправляет их в блокчейн (бесплатно!). В результате мы получаем хеш транзакции, результат которой можно отследить в HOT Scan. Пример транзакции: [https://hotscan.org/transaction/4cYXDkgofecfPKWvjeAnqs1VtRP1PbnLeGLZnKdoTmnT](https://hotscan.org/transaction/4cYXDkgofecfPKWvjeAnqs1VtRP1PbnLeGLZnKdoTmnT)
+У каждого кошелька в HOT Kit есть специальный IntentsBulder, с помощью которого вы можете сформировать любое действие с вашими омни балансом. Цепочка команд чаще всего заканчивается вызовом execute, который вызывает подпись сформированных интентов и затем отправляет их в блокчейн (бесплатно!).&#x20;
 
-### Nodejs and local private keys&#x20;
+В результате мы получаем хеш транзакции, результат которой можно отследить в HOT Scan. Пример транзакции: [https://hotscan.org/transaction/4cYXDkgofecfPKWvjeAnqs1VtRP1PbnLeGLZnKdoTmnT](https://hotscan.org/transaction/4cYXDkgofecfPKWvjeAnqs1VtRP1PbnLeGLZnKdoTmnT)
 
-Если вы используете **nodejs**, а не браузер, то вам необходимо инициализировать кошелек через приватный ключ. Например так:
+#### Why I need transfer to omni?
 
-```typescript
-import { NearWallet } from "@hot-labs/kit/near";
-
-const privateKey = Buffer.from(process.env.PRIVATE_KEY, 'hex')
-const wallet = await NearWallet.fromPrivateKey(privateKey, process.env.ACCOUNT_ID);
-```
+Переводы внутри омни очень быстрые и полностью бесплатные, вам не нужно думать о том какой блокчейн у получателя или сколько денег нужно потратить на комиссии. Однако если вам все же нужно отправить омни токены сразу на конкретный ончейн кошелек, то вам поможет следующая глава про вывод омни токенов.
