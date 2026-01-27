@@ -14,6 +14,7 @@
   * [Manage tokens and balances](hot-kit/manage-tokens-and-balances.md)
   * [Transfer omni token](hot-kit/transfer-omni-token.md)
   * [Withdraw omni token](hot-kit/withdraw-omni-token.md)
+  * [Authorization flow](hot-kit/authorization-flow.md)
   * [Connect via Google (wip)](hot-kit/connect-via-google-wip.md)
   * [Exchange flow (wip)](hot-kit/exchange-flow-wip.md)
   * [Omni balances (wip)](hot-kit/omni-balances-wip.md)
