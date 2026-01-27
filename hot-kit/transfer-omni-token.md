@@ -4,16 +4,16 @@ icon: money-bill-transfer
 
 # Transfer omni token
 
-Если вы работаете с омни балансами, то два самых частых юзкейса это обмен и трансфер.  Давайте рассмотрим как можно реализовать отправку омни токена с вашего кошелька на другой адрес.
+When working with Omni balances, the two most common use cases are exchange and transfer. Let’s take a look at how to implement sending an Omni token from your wallet to another address.
 
 {% hint style="info" %}
-Полностью рабочий пример вы можете найти здесь:\
+You can find a fully working example here:\
 [https://github.com/hot-dao/kit/blob/main/examples-node/transfer.ts](https://github.com/hot-dao/kit/blob/main/examples-node/transfer.ts)
 {% endhint %}
 
 #### 1. Connect wallet
 
-Для начала, если вы используете **nodejs**, а не браузер, то вам необходимо инициализировать кошелек через приватный ключ. Например так:
+First, if you are using Node.js rather than a browser, you need to initialize the wallet using a private key. For example:
 
 ```typescript
 import { NearWallet } from "@hot-labs/kit/near";
@@ -22,7 +22,7 @@ const privateKey = Buffer.from(process.env.PRIVATE_KEY, 'hex')
 const wallet = await NearWallet.fromPrivateKey(privateKey, process.env.ACCOUNT_ID);
 ```
 
-Для приложения в браузере вам достаточно запросить кошелек у HOT Connector:
+For a browser-based application, it is sufficient to request a wallet from the HOT Connector:
 
 ```typescript
 import { HotConnector } from "@hot-labs/kit"
@@ -33,7 +33,7 @@ const wallet = await kit.connect(); // Open UI
 
 #### 2. Recipient
 
-Теперь создадим адрес получателя. Так как вы отправляете омни токены с одного аккаунта на другой, то вы не можете просто использовать ончейн адрес получателя. Омни балансы хранятся на адресах другого формата, поэтому для начала создадим объект Recipient:
+Now let’s create the recipient address. Since you are sending Omni tokens from one account to another, **you cannot simply use the recipient’s on-chain address**. Omni balances are stored on addresses of a different format, so first, we need to create a Recipient object:
 
 ```typescript
 import { Recipient, WalletType } from "@hot-labs/kit/core";
@@ -42,11 +42,11 @@ import { Recipient, WalletType } from "@hot-labs/kit/core";
 const recipient = await Recipient.fromAddress(WalletType.EVM, "0x...");
 ```
 
-Recipient это удобный класс, который вычисляет omni адресс из вашего ончейн адреса. У такого класса есть три поля: `type`, `addres` и `omniAddress`&#x20;
+Recipient is a convenient class that computes the Omni address from your on-chain address. This class has three fields: `type`, `address`, and `omniAddress`.
 
 #### 3. Build and execute intent
 
-Теперь мы готовы собрать наш интент на трансфер и отправить omni NEAR с нашего кошелька на EVM кошелек (омни баланс):
+Now we are ready to create our **transfer intent** and send **OMNI NEAR** from our wallet to an EVM wallet (in Omni balance):
 
 ```typescript
 import { OmniToken } from "@hot-labs/kit/core";
@@ -63,10 +63,10 @@ const hash = await wallet
 console.log("10 NEAR Transfer Hash:", `https://hotscan.org/transaction/${hash}`);
 ```
 
-У каждого кошелька в HOT Kit есть специальный IntentsBulder, с помощью которого вы можете сформировать любое действие с вашими омни балансом. Цепочка команд чаще всего заканчивается вызовом execute, который вызывает подпись сформированных интентов и затем отправляет их в блокчейн (бесплатно!).&#x20;
+Each wallet in **HOT Kit** has a special **IntentsBuilder**, which allows you to create any action with your OMNI balance. The commands chain usually ends with a call to **execute**, which signs the created intents and then sends them to the blockchain (**for free!**).
 
-В результате мы получаем хеш транзакции, результат которой можно отследить в HOT Scan. Пример транзакции: [https://hotscan.org/transaction/4cYXDkgofecfPKWvjeAnqs1VtRP1PbnLeGLZnKdoTmnT](https://hotscan.org/transaction/4cYXDkgofecfPKWvjeAnqs1VtRP1PbnLeGLZnKdoTmnT)
+As a result, you receive a transaction hash, which can be tracked on HOT Scan. Example transaction: [https://hotscan.org/transaction/4cYXDkgofecfPKWvjeAnqs1VtRP1PbnLe](https://hotscan.org/transaction/4cYXDkgofecfPKWvjeAnqs1VtRP1PbnLeGLZnKdoTmnT)
 
-#### Why I need transfer to omni?
+### Why I need transfer to omni?
 
-Переводы внутри омни очень быстрые и полностью бесплатные, вам не нужно думать о том какой блокчейн у получателя или сколько денег нужно потратить на комиссии. Однако если вам все же нужно отправить омни токены сразу на конкретный ончейн кошелек, то вам поможет следующая глава про вывод омни токенов.
+Transfers within OMNI are **very fast and completely free**. You don’t need to worry about which blockchain the recipient uses or how much to spend on fees. However, if you need to send OMNI tokens directly to a specific on-chain wallet, the next chapter on withdrawing OMNI tokens will guide you.
