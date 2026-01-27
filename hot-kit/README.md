@@ -9,7 +9,9 @@ icon: fire
 
 ### 1. Multi-chain connector
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>HOT Kit lets users connect their own wallets to your site or log in via Google. It's great for onboarding web2 users into your app. With WalletConnect support, any mobile wallet can be connected effortlessly.</p></figcaption></figure>
+HOT Kit lets users connect their own wallets to your site or log in via Google. It's great for onboarding web2 users into your app. With WalletConnect support, any mobile wallet can be connected effortlessly.
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 * **NEAR Connector**\
   WC, HOT Wallet, Meteor, Intear, MyNearWallet, etc
@@ -51,7 +53,9 @@ export const kit = new HotConnector({
 
 ### 2. User portfolio
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>Users can view their token balances in connected wallets, and these balances are also available for you in the code.</p></figcaption></figure>
+Users can view their token balances in connected wallets, and these balances are also available for you in the code.
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 ```typescript
 kit.openProfile() // to open popup with profile
