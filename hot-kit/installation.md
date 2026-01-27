@@ -1,5 +1,9 @@
 # Installation
 
+{% hint style="info" %}
+To fully utilize the features of HOT Kit, obtain a free API key from the platform at [pay.hot-labs.org/admin/api-keys](https://pay.hot-labs.org/admin/api-keys).
+{% endhint %}
+
 ### Client-side setup
 
 `npm install @hot-labs/kit`
@@ -8,7 +12,7 @@ HOT Kit require you to install node polyfills and react to work, for vite you ne
 
 `npm install vite-plugin-node-polyfills @vitejs/plugin-react`
 
-Then in your vite.config.ts add this plugins:
+Then in your `vite.config.ts` add this plugins:
 
 ```ts
 import { defineConfig } from "vite";

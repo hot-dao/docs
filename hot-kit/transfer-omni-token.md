@@ -1,45 +1,68 @@
 # Transfer omni token
 
-Если вы работаете с омни балансами, то два самых частых юзкейса это обмен и трансфер&#x20;
+Если вы работаете с омни балансами, то два самых частых юзкейса это обмен и трансфер.  Давайте рассмотрим как можно реализовать отправку омни токена с вашего кошелька на другой адрес.
+
+#### 1. Connect wallet
+
+Для начала, если вы используете **nodejs**, а не браузер, то вам необходимо инициализировать кошелек через приватный ключ. Например так:
 
 ```typescript
-import "dotenv/config";
-
-import { base58 } from "@scure/base";
-import { Recipient, WalletType, tokens, OmniToken, Network } from "@hot-labs/kit/core";
 import { NearWallet } from "@hot-labs/kit/near";
 
-if (!process.env.ED25519_PRIVATE_KEY_BASE58) {
-  throw new Error("ED25519_PRIVATE_KEY_BASE58 is not set in .env file");
-}
-
-if (!process.env.ED25519_NEAR_SIGNER_ID) {
-  throw new Error("ED25519_SIGNER_ID is not set in .env file");
-}
-
-const PRIVATE_KEY = base58.decode(process.env.ED25519_PRIVATE_KEY_BASE58);
-const SIGNER_ID = process.env.ED25519_NEAR_SIGNER_ID;
-
-const main = async () => {
-  const wallet = await NearWallet.fromPrivateKey(Buffer.from(PRIVATE_KEY), SIGNER_ID);
-
-  const token = tokens.get(OmniToken.NEAR);
-  const assets = await wallet.fetchBalance(Network.Omni, OmniToken.NEAR);
-  console.log("NEAR balance:", token.float(assets[token.omniAddress]));
-
-  const recipient = await Recipient.fromAddress(WalletType.NEAR, "azbang69.near");
-  const hash = await wallet
-    .intents()
-    .transfer({
-      recipient: recipient.omniAddress,
-      token: OmniToken.NEAR,
-      amount: 1n,
-    })
-    .execute();
-
-  console.log("1 yoctoNEAR Transfer Hash:", `https://hotscan.org/transaction/${hash}`);
-};
-
-main().catch(console.error);
+const privateKey = Buffer.from(process.env.PRIVATE_KEY, 'hex')
+const wallet = await NearWallet.fromPrivateKey(privateKey, process.env.ACCOUNT_ID);
 ```
 
+Для приложения в браузере вам достаточно запросить кошелек у HOT Connector:
+
+```typescript
+import { HotConnector } from "@hot-labs/kit"
+import { defaultConnectors } from "@hot-labs/kit/defaults"
+const kit = new HotConnector({ connectors: defaultConnectors })
+const wallet = await kit.connect(); // Open UI
+```
+
+#### 2. Recipient
+
+Теперь создадим адрес получателя. Так как вы отправляете омни токены с одного аккаунта на другой, то вы не можете просто использовать ончейн адрес получателя. Омни балансы хранятся на адресах другого формата, поэтому для начала создадим объект Recipient:
+
+```typescript
+import { Recipient, WalletType } from "@hot-labs/kit/core";
+
+// Real onchain evm address:
+const recipient = await Recipient.fromAddress(WalletType.EVM, "0x...");
+```
+
+Recipient это удобный класс, который вычисляет omni адресс из вашего ончейн адреса. У такого класса есть три поля: `type`, `addres` и `omniAddress`&#x20;
+
+#### 3. Build and execute intent
+
+Теперь мы готовы собрать наш интент на трансфер и отправить omni NEAR с нашего кошелька на EVM кошелек (омни баланс):
+
+```typescript
+import { OmniToken } from "@hot-labs/kit/core";
+
+const hash = await wallet
+  .intents() // create Intents Builder
+  .transfer({
+    recipient: recipient.omniAddress,
+    token: OmniToken.NEAR, // ID like -4:omniTokenAddress
+    amount: 10,
+  })
+  .execute(); // execute transfer intent
+
+console.log("10 NEAR Transfer Hash:", `https://hotscan.org/transaction/${hash}`);
+```
+
+У каждого кошелька в HOT Kit есть специальный IntentsBulder, с помощью которого вы можете сформировать любое действие с вашими омни балансом. Цепочка команд чаще всего заканчивается вызовом execute, который вызывает подпись сформированных интентов и затем отправляет их в блокчейн (бесплатно!). В результате мы получаем хеш транзакции, результат которой можно отследить в HOT Scan. Пример транзакции: [https://hotscan.org/transaction/4cYXDkgofecfPKWvjeAnqs1VtRP1PbnLeGLZnKdoTmnT](https://hotscan.org/transaction/4cYXDkgofecfPKWvjeAnqs1VtRP1PbnLeGLZnKdoTmnT)
+
+### Nodejs and local private keys&#x20;
+
+Если вы используете **nodejs**, а не браузер, то вам необходимо инициализировать кошелек через приватный ключ. Например так:
+
+```typescript
+import { NearWallet } from "@hot-labs/kit/near";
+
+const privateKey = Buffer.from(process.env.PRIVATE_KEY, 'hex')
+const wallet = await NearWallet.fromPrivateKey(privateKey, process.env.ACCOUNT_ID);
+```
