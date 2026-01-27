@@ -23,7 +23,7 @@ await kit.disconnect(wallet) // or just WalletType.EVM/wallet.type
 HotConnector uses MobX to provide reactive state out of the box. In a separate article, you can learn how to integrate HOT Kit with React.
 {% endhint %}
 
-### Wallet class
+### Wallet instance
 
 Regardless of the connected chain or wallet, you receive a consistent interface, allowing you to:
 
