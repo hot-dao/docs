@@ -18,3 +18,4 @@
   * [Exchange flow (wip)](hot-kit/exchange-flow-wip.md)
   * [Omni balances (wip)](hot-kit/omni-balances-wip.md)
   * [Intents builder (wip)](hot-kit/intents-builder-wip.md)
+  * [Mint NFT via HOT Craft](hot-kit/mint-nft-via-hot-craft.md)
