@@ -2,7 +2,7 @@
 
 When you deposit a token via HOT Bridge on NEAR Intents, its address will be deterministically altered from the original on-chain format. To compute the omni format, you can use the TypeScript library `@hot-labs/omni-sdk`.
 
-<table><thead><tr><th width="148.28125">Types</th><th width="397.05859375">Format</th><th>How calculate</th></tr></thead><tbody><tr><td>Onchain</td><td>any chain-specific format</td><td></td></tr><tr><td>HOT Bridge</td><td><code>v2_1.omni.hot.tg:</code><strong><code>CHAIN</code></strong><code>_</code><strong><code>BASE58</code></strong></td><td><code>utils.toOmni</code></td></tr><tr><td>NEAR Intents</td><td><code>nep245:v2_1.omni.hot.tg:</code><strong><code>CHAIN</code></strong><code>_</code><strong><code>BASE58</code></strong></td><td><code>utils.toOmniIntent</code></td></tr></tbody></table>
+<table><thead><tr><th width="148.28125">Types</th><th width="397.05859375">Format</th><th>How calculate</th></tr></thead><tbody><tr><td>Onchain</td><td>any chain-specific format</td><td><code>utils.fromOmni</code></td></tr><tr><td>HOT Bridge</td><td><code>v2_1.omni.hot.tg:</code><strong><code>CHAIN</code></strong><code>_</code><strong><code>BASE58</code></strong></td><td><code>utils.toOmni</code></td></tr><tr><td>NEAR Intents</td><td><code>nep245:v2_1.omni.hot.tg:</code><strong><code>CHAIN</code></strong><code>_</code><strong><code>BASE58</code></strong></td><td><code>utils.toOmniIntent</code></td></tr></tbody></table>
 
 ## Stellar tokens
 
