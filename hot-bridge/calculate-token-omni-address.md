@@ -1,11 +1,12 @@
 # Calculate token omni address
 
+When you deposit a token via HOT Bridge on NEAR Intents, its address will be deterministically altered from the original on-chain format. To compute the omni format, you can use the TypeScript library `@hot-labs/omni-sdk`.
+
 <table><thead><tr><th width="148.28125">Types</th><th width="397.05859375">Format</th><th>How calculate</th></tr></thead><tbody><tr><td>Onchain</td><td>any chain-specific format</td><td></td></tr><tr><td>HOT Bridge</td><td><code>v2_1.omni.hot.tg:</code><strong><code>CHAIN</code></strong><code>_</code><strong><code>BASE58</code></strong></td><td><code>utils.toOmni</code></td></tr><tr><td>NEAR Intents</td><td><code>nep245:v2_1.omni.hot.tg:</code><strong><code>CHAIN</code></strong><code>_</code><strong><code>BASE58</code></strong></td><td><code>utils.toOmniIntent</code></td></tr></tbody></table>
 
 ## Stellar tokens
 
-В случае с блокчейном стеллар возникает дополнительная путаница. \
-В блокчейне существуют высокоуровневые Asset'ы, доступ к которым осуществляется через контракт Issuer'а и символа. Но HOT Bridge работает не с ассетами, а с контрактом токена, который можно получить через `asset.contractId(Networks.PUBLIC)` . Уже этот адрес подлежит детерминированному форматированию в омни адрес.&#x20;
+In the Stellar blockchain, there's an additional complexity. The blockchain features high-level Assets, accessible through an Issuer contract and symbol. However, HOT Bridge interacts with the token contract instead. This contract can be obtained via `asset.contractId(Networks.PUBLIC)` and this address must be converted to an HOT Bridge address.
 
 ```typescript
 import { utils, Network, HotBridge } from "@hot-labs/omni-sdk";
