@@ -3,6 +3,7 @@
 * [Overview](README.md)
 * [HOT Omni Balance](hot-omni-balance.md)
 * [HOT Bridge](omni-tokens/README.md)
+  * [Calculate token omni address](hot-bridge/calculate-token-omni-address.md)
   * [Security](hot-bridge/security.md)
 * [MPC Wallet](mpc-wallet/README.md)
   * [Signature generation via MPC](mpc-wallet/signature-generation-via-mpc/README.md)
