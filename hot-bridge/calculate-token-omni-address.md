@@ -6,6 +6,13 @@ When you deposit a token via HOT Bridge on NEAR Intents, its address will be det
 
 ## Stellar tokens
 
+Stellar has two types of tokens:
+
+1. **Classic Assets** (G-address issuer): Use `Asset.contractId()` to derive the Soroban contract ID
+2. **Native Soroban Contracts** (C-address): Use the contract address directly
+
+### Classic Assets (G-address issuer)
+
 In the Stellar blockchain, there's an additional complexity. The blockchain features high-level Assets, accessible through an Issuer contract and symbol. However, HOT Bridge interacts with the token contract instead. This contract can be obtained via `asset.contractId(Networks.PUBLIC)` and this address must be converted to an HOT Bridge address.
 
 ```typescript
@@ -32,4 +39,15 @@ const main = async () => {
 };
 
 main();
+```
+
+### Native Soroban Contracts (C-address)
+
+```typescript
+import { utils, Network } from "@hot-labs/omni-sdk";
+
+// Use the contract address directly
+const contract = "CBIJBDNZNF4X35BJ4FFZWCDBSCKOP5NB4PLG4SNENRMLAPYG4P5FM6VN";
+const omniAddress = utils.toOmniIntent(Network.Stellar, contract);
+console.log(omniAddress);
 ```
