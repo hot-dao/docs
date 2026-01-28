@@ -12,12 +12,12 @@ You can find a complete working example here:
 [https://github.com/hot-dao/kit/blob/main/examples-node/withdraw.ts](https://github.com/hot-dao/kit/blob/main/examples-node/withdraw.ts)
 {% endhint %}
 
-<pre class="language-typescript"><code class="lang-typescript">import { Recipient, WalletType, tokens, OmniToken, Network, Exchange } from "@hot-labs/kit/core";
+<pre class="language-typescript"><code class="lang-typescript">import { Recipient, tokens, OmniToken, Network, Exchange } from "@hot-labs/kit/core";
 import { NearWallet } from "@hot-labs/kit/near";
 
 const exchange = new Exchange();
 const wallet = await NearWallet.fromPrivateKey(Buffer.from(PRIVATE_KEY), SIGNER_ID);
-const recipient = await Recipient.fromAddress(WalletType.Tron, "TTB...");
+const recipient = await Recipient.fromAddress(Network.Tron, "TTB...");
 
 // We want to exchange OMNI USDT to TRC20 USDT
 const omniUSDT = tokens.get(OmniToken.USDT);

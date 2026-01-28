@@ -36,10 +36,10 @@ const wallet = await kit.connect(); // Open UI
 Now let’s create the recipient address. Since you are sending Omni tokens from one account to another, **you cannot simply use the recipient’s on-chain address**. Omni balances are stored on addresses of a different format, so first, we need to create a Recipient object:
 
 ```typescript
-import { Recipient, WalletType } from "@hot-labs/kit/core";
+import { Recipient, Network } from "@hot-labs/kit/core";
 
 // Real onchain evm address:
-const recipient = await Recipient.fromAddress(WalletType.EVM, "0x...");
+const recipient = await Recipient.fromAddress(Network.Eth, "0x...");
 ```
 
 Recipient is a convenient class that computes the Omni address from your on-chain address. This class has three fields: `type`, `address`, and `omniAddress`.
